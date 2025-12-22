@@ -38,8 +38,8 @@ async function getData(URL) {
     console.log(error);
   }
 }
-
 getData(URL);
+
 const h22 = document.getElementById("api-response");
 const putJokeInHTML = async () => {
   const joke = await getData(URL);
