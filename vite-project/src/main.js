@@ -21,27 +21,15 @@ document.querySelector("#app").innerHTML = `
   </div>
 `;
 
-<<<<<<< Updated upstream
 setupCounter(document.querySelector("#counter"));
 
 const URL = "https://geek-jokes.sameerkumar.website/api?format=json";
 async function getData(URL) {
-=======
-setupCounter(document.querySelector('#counter'))
-
-
-const URL = "https://api.edamam.com/api/recipes/v2"
-async function geData(URL) {
->>>>>>> Stashed changes
   try {
     const response = await fetch(URL);
     if (response.status != 200) {
       throw new Error(response);
-<<<<<<< Updated upstream
     } else {
-=======
-    } else { 
->>>>>>> Stashed changes
       const data = await response.json();
       console.log(data);
       document.getElementById("api-response").textContent = data.name;
@@ -50,15 +38,11 @@ async function geData(URL) {
     console.log(error);
   }
 }
-<<<<<<< Updated upstream
-getData(URL);
 
+getData(URL);
 const h22 = document.getElementById("api-response");
 const putJokeInHTML = async () => {
   const joke = await getData(URL);
   h22.innerHTML = `joke: ${joke}`;
 };
 putJokeInHTML();
-=======
-getData("gengar");
->>>>>>> Stashed changes
