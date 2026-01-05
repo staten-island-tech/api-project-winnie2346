@@ -22,6 +22,7 @@ document.querySelector("#app").innerHTML = `
 `;
 
 setupCounter(document.querySelector("#counter"));
+const h22 = document.getElementById("api-response");
 
 const URL = "https://geek-jokes.sameerkumar.website/api?format=json";
 async function getData(URL) {
@@ -32,7 +33,7 @@ async function getData(URL) {
     } else {
       const data = await response.json();
       console.log(data);
-      document.getElementById("api-response").textContent = data.name;
+      return data;
     }
   } catch (error) {
     console.log(error);
@@ -40,7 +41,6 @@ async function getData(URL) {
 }
 getData(URL);
 
-const h22 = document.getElementById("api-response");
 const putJokeInHTML = async () => {
   const joke = await getData(URL);
   h22.innerHTML = `${joke}`;
