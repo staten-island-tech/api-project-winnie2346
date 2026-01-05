@@ -43,6 +43,6 @@ getData(URL);
 const h22 = document.getElementById("api-response");
 const putJokeInHTML = async () => {
   const joke = await getData(URL);
-  h22.innerHTML = `joke: ${joke}`;
+  h22.innerHTML = `${joke}`;
 };
 putJokeInHTML();
