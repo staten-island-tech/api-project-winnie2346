@@ -45,4 +45,4 @@ const putJokeInHTML = async () => {
   const joke = await getData(URL);
   h22.innerHTML = `${joke}`;
 };
-putJokeInHTML();
+putJokeInHTML;
