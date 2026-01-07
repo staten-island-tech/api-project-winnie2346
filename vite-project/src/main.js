@@ -33,6 +33,7 @@ async function getData(URL) {
     } else {
       const data = await response.json();
       console.log(data);
+      document.getElementById("api-response").textContent = data.name;
       return data;
     }
   } catch (error) {
