@@ -24,10 +24,10 @@ document.querySelector("#app").innerHTML = `
 setupCounter(document.querySelector("#counter"));
 const h22 = document.getElementById("api-response");
 
-const URL = "https://geek-jokes.sameerkumar.website/api?format=json";
-async function getData(URL) {
+const URLCAT = "https://meowfacts.herokuapp.com/?count=1";
+async function getData(URLCAT) {
   try {
-    const response = await fetch(URL);
+    const response = await fetch(URLCAT);
     if (response.status != 200) {
       throw new Error(response);
     } else {
@@ -40,10 +40,28 @@ async function getData(URL) {
     console.log(error);
   }
 }
-getData(URL);
+getData(URLCAT);
 
-const putJokeInHTML = async () => {
-  const joke = await getData(URL);
-  h22.innerHTML = `${joke}`;
-};
-putJokeInHTML;
+const nihao = "https://meowfacts.herokuapp.com/?lang=zho";
+async function get(nihao) {
+  try {
+    const response = await fetch(nihao);
+    if (response.status != 200) {
+      throw new Error(response);
+    } else {
+      const data = await response.json();
+      console.log(data);
+      document.getElementById("api-response").textContent = data.name;
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+get(nihao);
+
+// const putCATInHTML = async () => {
+//   const joke = await getData(URL);
+//   h22.innerHTML = `${joke}`;
+// };
+// putCATInHTML;
