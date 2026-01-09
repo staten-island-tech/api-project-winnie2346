@@ -22,9 +22,8 @@ document.querySelector("#app").innerHTML = `
 `;
 
 setupCounter(document.querySelector("#counter"));
-const h22 = document.getElementById("api-response");
 
-const URLCAT = "https://meowfacts.herokuapp.com/?count=1";
+const URLCAT = "https://api.disneyapi.dev/character";
 async function getData(URLCAT) {
   try {
     const response = await fetch(URLCAT);
@@ -41,27 +40,22 @@ async function getData(URLCAT) {
   }
 }
 getData(URLCAT);
+//https://disneyapi.dev/
 
-const nihao = "https://meowfacts.herokuapp.com/?lang=zho";
-async function get(nihao) {
-  try {
-    const response = await fetch(nihao);
-    if (response.status != 200) {
-      throw new Error(response);
-    } else {
-      const data = await response.json();
-      console.log(data);
-      document.getElementById("api-response").textContent = data.name;
-      return data;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-get(nihao);
-
-// const putCATInHTML = async () => {
-//   const joke = await getData(URL);
-//   h22.innerHTML = `${joke}`;
-// };
-// putCATInHTML;
+// const nihao = "https://meowfacts.herokuapp.com/?lang=zho";
+// async function get(nihao) {
+//   try {
+//     const response = await fetch(nihao);
+//     if (response.status != 200) {
+//       throw new Error(response);
+//     } else {
+//       const data = await response.json();
+//       console.log(data);
+//       document.getElementById("api-response2").textContent = data.name;
+//       return data;
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// get(nihao);
