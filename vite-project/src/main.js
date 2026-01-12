@@ -23,39 +23,68 @@ document.querySelector("#app").innerHTML = `
 
 setupCounter(document.querySelector("#counter"));
 
-const URLCAT = "https://api.disneyapi.dev/character";
-async function getData(URLCAT) {
+const URL = "https://api.disneyapi.dev/character";
+async function getData(URL) {
   try {
-    const response = await fetch(URLCAT);
+    const response = await fetch(URL);
     if (response.status != 200) {
       throw new Error(response);
     } else {
       const data = await response.json();
       console.log(data);
-      document.getElementById("api-response").textContent = data.name;
+
       return data;
     }
   } catch (error) {
     console.log(error);
   }
 }
-getData(URLCAT);
-//https://disneyapi.dev/
+getData(URL);
 
-// const nihao = "https://meowfacts.herokuapp.com/?lang=zho";
-// async function get(nihao) {
-//   try {
-//     const response = await fetch(nihao);
-//     if (response.status != 200) {
-//       throw new Error(response);
-//     } else {
-//       const data = await response.json();
-//       console.log(data);
-//       document.getElementById("api-response2").textContent = data.name;
-//       return data;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// get(nihao);
+
+const apiResponse = document.getElementById("api-response");
+const putin = async () => {
+  apiResponse.innerHTML = "";
+    const item = await getData(URL);//wait for api named itme
+    const dataa = item.data;//api array is called data
+   dataa.forEach((items)=>{
+    const card =
+    ` <div class="stuff border-2 m-auto mb-3">
+    <div class="title  flex justify-center"> ${items.name}</div>
+<div class="picture  flex justify-center"> <img src="${items.imageUrl}"/></div>
+<div class="films  flex justify-center"> <p>${items.films}</p></div>
+</div>
+`;
+apiResponse.insertAdjacentHTML("beforeend", card);
+   }) ;
+};
+putin();
+const all = document.getElementById("all");
+all.addEventListener("click", () => {
+  
+  putin();
+});
+
+const grr = document.getElementById("Ariel");
+
+grr.addEventListener("click", async () => {
+  const aaaaahh = `https://api.disneyapi.dev/character/112`;
+  const item = await getData(aaaaahh);
+  
+  apiResponse.innerHTML = "";
+
+  const card = `
+    <div class="stuff border-2 m-auto mb-3">
+      <div class="title flex justify-center">${item.name}</div>
+      <div class="picture flex justify-center">
+        <img src="${item.imageUrl}" />
+      </div>
+      <div class="films flex justify-center">
+        <p>${item.films}</p>
+      </div>
+    </div>
+  `;
+
+  apiResponse.insertAdjacentHTML("beforeend", card);
+});
+
