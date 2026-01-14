@@ -68,19 +68,19 @@ all.addEventListener("click", () => {
 const grr = document.getElementById("Ariel");
 
 grr.addEventListener("click", async () => {
-  const aaaaahh = `https://api.disneyapi.dev/character/112`;
+  const aaaaahh = `https://api.disneyapi.dev/character/189`;
   const item = await getData(aaaaahh);
   
   apiResponse.innerHTML = "";
 
   const card = `
     <div class="stuff border-2 m-auto mb-3">
-      <div class="title flex justify-center">${item.name}</div>
+      <div class="title flex justify-center">${item.data.name}</div>
       <div class="picture flex justify-center">
-        <img src="${item.imageUrl}" />
+        <img src="${item.data.imageUrl}" />
       </div>
       <div class="films flex justify-center">
-        <p>${item.films}</p>
+        <p>${item.data.films}</p>
       </div>
     </div>
   `;
